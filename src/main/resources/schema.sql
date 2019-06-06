@@ -1,0 +1,32 @@
+
+DROP TABLE IF EXISTS LOCATION;
+create table LOCATION
+(
+	ID BIGINT not null
+		primary key,
+	NAME VARCHAR(255)
+);
+
+DROP TABLE IF EXISTS PRODUCT;
+create table PRODUCT
+(
+	ID BIGINT not null
+		primary key,
+	NAME VARCHAR(255),
+	PRICE INTEGER
+);
+
+DROP TABLE IF EXISTS PRODUCT_LOCATION;
+create table PRODUCT_LOCATION
+(
+	ID BIGINT not null
+		primary key,
+	"COUNT" INTEGER,
+	LOCATION_ID BIGINT
+		constraint LOCATION_FK
+			references LOCATION,
+	PRODUCT_ID BIGINT
+		constraint PRODUCT_FK
+			references PRODUCT
+);
+
